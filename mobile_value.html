@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>声速的测定实验数据处理</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center; /* 让容器内的文本居中 */
+    }
+    h1 {
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        text-align: center; /* 让表格内的文本居中 */
+    }
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    input[type="text"] {
+        width: 60px; /* 调整输入框的宽度 */
+        text-align: center; /* 让输入框内的文本居中 */
+    }
+    #calculate-button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #result {
+        margin-top: 20px;
+    }
+
+    #result-left,
+    #result-right {
+        display: inline-block;
+        width: 49%;
+        text-align: center;
+    }
+    #status {
+        margin-top: 20px;
+        text-align: center; /* 让结果文本居中 */
+    }
+
+    /* 响应式设计 */
+    @media screen and (max-width: 767px) {
+        .container {
+            margin: 20px;
+            padding: 15px;
+        }
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        input[type="text"] {
+            width: 90%;
+        }
+        #result-left, #result-right {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>声速的测定实验数据处理</h1>
+    <label>驻波法数据记录表</label>
+    <br><br>
+    <label for="inputBox">t（℃）：</label>
+    <input type="text" id="inputBox" value="25">
+    <br>
+    <label for="inputBox2">f<sub>0</sub>（kHz）：</label>
+    <input type="text" id="inputBox2" value="36.077">
+    <br><br>
+    <form id="data-form">
+        <table>
+            <thead>
+                <tr>
+                    <th>接收面位置</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- 替换每个单元格为输入框 -->
+                    <th>x/mm</th>
+                    <td><input type="text" name="cell10" value="19.64"></td>
+                    <td><input type="text" name="cell11" value="24.42"></td>
+                    <td><input type="text" name="cell12" value="29.20"></td>
+                    <td><input type="text" name="cell13" value="33.82"></td>
+                    <td><input type="text" name="cell14" value="38.70"></td>
+                    <td><input type="text" name="cell15" value="43.44"></td>
+                </tr>
+                <tr>
+                    <th>接收面位置</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                </tr>
+                <tr>
+                    <!-- 替换每个单元格为输入框 -->
+                    <th>x/mm</th>
+                    <td><input type="text" name="cell20" value="48.66"></td>
+                    <td><input type="text" name="cell21" value="52.86"></td>
+                    <td><input type="text" name="cell22" value="57.80"></td>
+                    <td><input type="text" name="cell23" value="62.56"></td>
+                    <td><input type="text" name="cell24" value="67.56"></td>
+                    <td><input type="text" name="cell25" value="72.38"></td>
+                </tr>
+            </tbody>
+        </table>
+    <label>相位法数据记录表</label>
+    <br><br>
+    <label for="inputBox3">t（℃）：</label>
+    <input type="text" id="inputBox3" value="25">
+    <br>
+    <label for="inputBox4">f<sub>0</sub>（kHz）：</label>
+    <input type="text" id="inputBox4" value="36.099">
+    <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>接收面位置</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- 替换每个单元格为输入框 -->
+                    <th>x/mm</th>
+                    <td><input type="text" name="cell30" value="15.32"></td>
+                    <td><input type="text" name="cell31" value="19.86"></td>
+                    <td><input type="text" name="cell32" value="24.82"></td>
+                    <td><input type="text" name="cell33" value="29.60"></td>
+                    <td><input type="text" name="cell34" value="34.44"></td>
+                    <td><input type="text" name="cell35" value="39.32"></td>
+                </tr>
+                <tr>
+                    <th>接收面位置</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                    <th>11</th>
+                    <th>12</th>
+                </tr>
+                <tr>
+                    <!-- 替换每个单元格为输入框 -->
+                    <th>x/mm</th>
+                    <td><input type="text" name="cell40" value="43.90"></td>
+                    <td><input type="text" name="cell41" value="48.80"></td>
+                    <td><input type="text" name="cell42" value="53.70"></td>
+                    <td><input type="text" name="cell43" value="58.44"></td>
+                    <td><input type="text" name="cell44" value="63.46"></td>
+                    <td><input type="text" name="cell45" value="67.82"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <button id="calculate-button">执行程序</button>
+    <div id="result">
+        <div id="result-left"></div>
+        <div id="result-right"></div>
+    </div>
+    <div id="status"></div>
+</div>
+
+<script>
+    document.getElementById('calculate-button').addEventListener('click', function() {
+        try {
+            // 驻波法计算
+            var d_values_1 = [];
+            var d_values_2 = [];
+            var D = [];
+            var inputBoxValue = parseFloat(document.getElementById("inputBox").value);
+            var inputBoxValue2 = parseFloat(document.getElementById("inputBox2").value);
+            if (isNaN(inputBoxValue) || isNaN(inputBoxValue2)) {
+                throw "请输入有效的数字";
+            }
+            var f0 = inputBoxValue2;
+            var t = inputBoxValue;
+
+            // 从输入字段提取数据
+            for (var i = 0; i <= 5; i++) {
+                var value1 = parseFloat(document.getElementsByName("cell1" + i)[0].value);
+                var value2 = parseFloat(document.getElementsByName("cell2" + i)[0].value);
+                if (isNaN(value1) || isNaN(value2)) throw "请输入有效的数字";
+                d_values_1.push(value1);
+                d_values_2.push(value2);
+            }
+            for (var i = 0; i <= 5; i++) {
+                var value = d_values_2[i] - d_values_1[i];
+                D.push(value);
+            }
+            var l = 0;
+            for (var i = 0; i <= 5; i++) {
+                l += D[i];
+            }
+            L = l / 6;
+
+            v1 = f0 * 2 * L / 6;
+            var v0 = 331.45;
+            var T0 = 273.15;
+            var vt = v0 * Math.sqrt(1 + (t/T0))
+            dv = Math.abs(v1 - vt)
+            Er = Math.abs(v1 - vt) / vt * 100;
+
+            // 相位法计算
+            var d_values_3 = [];
+            var d_values_4 = [];
+            var D = [];
+            var inputBoxValue3= parseFloat(document.getElementById("inputBox3").value);
+            var inputBoxValue4 = parseFloat(document.getElementById("inputBox4").value);
+            if (isNaN(inputBoxValue3) || isNaN(inputBoxValue4)) {
+                throw "请输入有效的数字";
+            }
+            var f0 = inputBoxValue4;
+            var t = inputBoxValue3;
+
+            // 从输入字段提取数据
+            for (var i = 0; i <= 5; i++) {
+                var value1 = parseFloat(document.getElementsByName("cell3" + i)[0].value);
+                var value2 = parseFloat(document.getElementsByName("cell4" + i)[0].value);
+                if (isNaN(value1) || isNaN(value2)) throw "请输入有效的数字";
+                d_values_3.push(value1);
+                d_values_4.push(value2);
+            }
+            for (var i = 0; i <= 5; i++) {
+                var value = d_values_4[i] - d_values_3[i];
+                D.push(value);
+            }
+            var l = 0;
+            for (var i = 0; i <= 5; i++) {
+                l += D[i];
+            }
+            L = l / 6;
+
+            v2 = f0 * 2 * L / 6;
+            var v0 = 331.45;
+            var T0 = 273.15;
+            var vt = v0 * Math.sqrt(1 + (t/T0))
+            dv2 = Math.abs(v2 - vt)
+            Er2 = Math.abs(v2 - vt) / vt * 100;
+
+            // 显示结果
+            document.getElementById("result-left").innerHTML = "驻波法计算：<br>声速为：" + v1.toFixed(1) + "m/s<br>绝对误差为：" + dv.toFixed(1) + "m/s<br>相对误差为：" + Er.toFixed(1) + "%";
+            document.getElementById("result-right").innerHTML = "相位法计算：<br>声速为：" + v2.toFixed(1) + "m/s<br>绝对误差为：" + dv2.toFixed(1) + "m/s<br>相对误差为：" + Er2.toFixed(1) + "%";
+            document.getElementById("status").innerHTML = "运行完毕";
+
+        } catch (error) {
+            document.getElementById("status").innerHTML = "错误：" + error;
+            document.getElementById("result").innerHTML = ""
+        }
+    });
+</script>
+</body>
+</html>
