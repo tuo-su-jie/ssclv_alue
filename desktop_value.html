@@ -263,8 +263,8 @@
             Er2 = Math.abs(v2 - vt) / vt * 100;
 
             // 显示结果
-            document.getElementById("result-left").innerHTML = "驻波法计算：<br>声速为：" + v1.toFixed(1) + "m/s<br>绝对误差为：" + dv.toFixed(1) + "<br>相对误差为：" + Er.toFixed(1) + "%";
-            document.getElementById("result-right").innerHTML = "相位法计算：<br>声速为：" + v2.toFixed(1) + "m/s<br>绝对误差为：" + dv2.toFixed(1) + "<br>相对误差为：" + Er2.toFixed(1) + "%";
+            document.getElementById("result-left").innerHTML = "驻波法计算：<br>声速为：" + v1.toFixed(1) + "m/s<br>绝对误差为：" + dv.toFixed(1) + "m/s<br>相对误差为：" + Er.toFixed(1) + "%";
+            document.getElementById("result-right").innerHTML = "相位法计算：<br>声速为：" + v2.toFixed(1) + "m/s<br>绝对误差为：" + dv2.toFixed(1) + "m/s<br>相对误差为：" + Er2.toFixed(1) + "%";
             document.getElementById("status").innerHTML = "运行完毕";
 
         } catch (error) {
